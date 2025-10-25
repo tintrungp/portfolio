@@ -1,0 +1,196 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{comment}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Tin-Trung Pham} \\ \vspace{1pt}
+    \small 714-251-3407 $|$ \href{mailto:tintrung.p@gmail.com}{\underline{tintrung.p@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/tintrungp/}{\underline{linkedin.com/in/tintrungp}} $|$
+    \href{https://github.com/tintrungp}{\underline{github.com/tintrungp}}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of California, San Diego}{San Diego, CA}
+      {B.S. in Computer Science, 3.7 GPA}{Sep. 2019 -- June 2023}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    
+    \resumeSubheading
+      {Software Developer}{June 2022 -- Present}
+      {General Atomics Aeronautical Systems}{San Diego, CA}
+    \resumeSubSubheading
+        {Software Developer II}{January 2025 - Present}
+        \resumeItemListStart
+            \resumeItem {Performed in-depth capability analysis through custom testing, providing data that influenced internal design decisions and informed FAA requirement discussions. }
+            \resumeItem {Developed high-performance C++ programs for real-time pilot control station analysis, validating 500+ DO-365B safety-critical software requirements for FAA certification.}
+            \resumeItem {Assisted with comprehensive static code analysis using Fortify and Klocwork, achieving 100\% coverage of the codebase and resolving 25+ critical security vulnerabilities}
+            \resumeItem {Spearheaded development of modular code traceability system mapping source code to system requirements, demonstrating object-oriented design principles and reducing audit preparation from weeks to days}
+        \resumeItemListEnd
+    \resumeSubSubheading
+        {Software Developer I}{July 2023 - December 2024}
+        \resumeItemListStart
+            \resumeItem {Collaborated with project engineers to integrate software with embedded hardware, validating data integrity across ARINC 429, Ethernet, and RS-422 protocols using Wireshark.}
+            \resumeItem {Upgraded virtual desktop-based simulation to hardware-in-the-loop (HIL) testing, reducing system response latency by 15\% through real-time execution and dedicated hardware interfaces.} 
+            \resumeItem {Designed and implemented a custom testing framework that enabled QA engineers to create test procedures using Excel files, increasing test coverage by 40\% and accelerating test development}
+        \resumeItemListEnd
+    \resumeSubSubheading
+        {Software Developer Intern}{June 2022 - August 2022}
+        \resumeItemListStart
+            \resumeItem {Analyzed and refined documentation for internal testing tools to ensure complete compliance with FAA performance regulations}
+            \resumeItem {Designed a Qt Creator-based user interface for internal testing tools that adhered to strict FAA regulations}
+            \resumeItem {Developed automation framework for internal testing tools that enabled continuous batch testing of 2000+ flight scenarios, reducing active testing time by 95\%}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Craps Simulator} $|$ \emph{JavaScript, HTML/CSS, Electron, Jest}}{March 2025 - April 2025}
+          \resumeItemListStart
+            \resumeItem{Architected and developed a cross-platform casino craps simulator using JavaScript, HTML/CSS, and Electron, implementing a modular design with clear separation between game logic, betting system, UI, and storage components} 
+            \resumeItem{Applied software engineering best practices including SOLID principles, pure functions, and immutable data patterns to create maintainable, testable code with predictable state management}
+            \resumeItem{Implemented comprehensive test suite with 50+ unit and integration tests using Jest, achieving 100\% code coverage through test-driven development practices}
+
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Prayer Board} $|$ \emph{MongoDB, Express, React, Node}}{July 2021 - August 2021}
+          \resumeItemListStart
+            \resumeItem{Created interactive media platform web application leveraging Express and React}
+            \resumeItem{Stored and served prayer requests from multiple Christian organizations at UCSD to share using MongoDB}
+            \resumeItem{Peaked with 40+ users sharing 15+ prayer request each day}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C/C++, Python, SQL, JavaScript, Node.js, HTML/CSS} \\
+     \textbf{Frameworks}{: Electron, React, Django} \\
+     \textbf{Testing Frameworks}{: Jest, JUnit} \\
+     \textbf{Developer Tools}{: SVN, Git, GitHub, Wireshark, Klocwork, Fortify} \\
+     \textbf{Systems}{: Real-time Systems, RTOS (VxWorks), Hardware-in-the-loop (HIL)} \\ 
+     \textbf{Security Clearance}{: Secret-Level Clearance | November 2023 - Present}
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}g
