@@ -1,0 +1,82 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.navbar :hover {
+    cursor: pointer;
+}
+
+.definition {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    z-index: 100;
+    text-align: left;
+}
+
+.name {
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.description {
+    margin-top: 0;
+    font-size: 1rem;
+}
+.slide-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.top-part {
+    
+}
+
+.bottom-img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    visibility: visible;
+}
+
+.slide img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    display: none;
+    visibility: hidden; 
+}
+.slide-info {
+    position: absolute;
+    width: 40%;
+    text-align: left;
+}
+
+  
