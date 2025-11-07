@@ -3,24 +3,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const slideContainer = document.querySelector('.slide-container');
     const originalSlides = document.querySelectorAll('.slide');
     const totalSlides = originalSlides.length;
-    
+    const definition = document.querySelector('.definition');
+
     // Clone the last slide and prepend it to the beginning
     const lastSlideClone = originalSlides[totalSlides - 1].cloneNode(true);
     lastSlideClone.classList.add('clone', 'clone-start');
     slideContainer.insertBefore(lastSlideClone, originalSlides[0]);
-    
+
     // Clone the first slide and append it to the end
     const firstSlideClone = originalSlides[0].cloneNode(true);
     firstSlideClone.classList.add('clone', 'clone-end');
     slideContainer.appendChild(firstSlideClone);
-    
+
     // Get all slides including clones
     const allSlides = document.querySelectorAll('.slide');
     const totalSlidesWithClones = allSlides.length;
-    
+
     // Start at index 1 (first real slide, since index 0 is the clone of last slide)
     let currentSlideIndex = 1;
     let isTransitioning = false;
+
+    // Track vertical position for each slide (true = on bottom-part, false = on top-part)
+    const verticalPositions = new Array(totalSlidesWithClones).fill(false);
 
     // Function to update slide positions
     function updateSlidePositions(index) {
@@ -86,13 +90,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to show a specific slide
     function showSlide(index) {
         if (isTransitioning) return; // Prevent input during transition
-        
+
         // Set transitioning flag to block input during the animation
         isTransitioning = true;
-        
+
+        // Reset the new slide to top-part if it was on bottom-part
+        if (verticalPositions[index]) {
+            verticalPositions[index] = false;
+            allSlides[index].classList.remove('vertical-down');
+        }
+
+        // Always ensure definition is visible when navigating horizontally
+        definition.classList.remove('hidden-up');
+
         currentSlideIndex = index;
         updateSlidePositions(currentSlideIndex);
-        
+
         // After transition completes, snap to real slide if needed
         setTimeout(() => {
             snapToRealSlide();
@@ -111,17 +124,62 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentSlideIndex - 1);
     }
 
+    // Function to handle vertical navigation within a slide
+    function navigateVertical(direction) {
+        if (isTransitioning) return;
+
+        const currentVerticalPosition = verticalPositions[currentSlideIndex];
+        const currentSlide = allSlides[currentSlideIndex];
+
+        if (direction === 'down' && !currentVerticalPosition) {
+            // Moving from top-part to bottom-part
+            isTransitioning = true;
+            verticalPositions[currentSlideIndex] = true;
+            currentSlide.classList.add('vertical-down');
+            definition.classList.add('hidden-up');
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, TRANSITION_DURATION);
+        } else if (direction === 'up' && currentVerticalPosition) {
+            // Moving from bottom-part to top-part
+            isTransitioning = true;
+            verticalPositions[currentSlideIndex] = false;
+            currentSlide.classList.remove('vertical-down');
+            definition.classList.remove('hidden-up');
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, TRANSITION_DURATION);
+        }
+    }
+
+    // Check if horizontal navigation is allowed
+    function canNavigateHorizontally() {
+        return !verticalPositions[currentSlideIndex]; // Only allow when on top-part
+    }
+
     // Add keyboard event listener
     document.addEventListener('keydown', function(event) {
         if (event.key === 'ArrowRight') {
-            nextSlide();
+            if (canNavigateHorizontally()) {
+                nextSlide();
+            }
         } else if (event.key === 'ArrowLeft') {
-            previousSlide();
+            if (canNavigateHorizontally()) {
+                previousSlide();
+            }
+        } else if (event.key === 'ArrowDown') {
+            navigateVertical('down');
+        } else if (event.key === 'ArrowUp') {
+            navigateVertical('up');
         }
     });
 
-    // Add mouse scroll listener
+    // Add mouse scroll listener (only for horizontal navigation when on top-part)
     document.addEventListener('wheel', function(event) {
+        if (!canNavigateHorizontally()) return;
+
         if (event.deltaY > 0) {
             nextSlide();
         } else if (event.deltaY < 0) {
